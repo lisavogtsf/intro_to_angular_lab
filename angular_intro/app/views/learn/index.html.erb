@@ -1,15 +1,69 @@
 <div ng-controller="IndexCtrl" ng-style="{backgroundColor: favoriteColor}">
 	<h1>Favorite Movies</h1>
 
-	<div ng-repeat="favoriteMovie in favoriteMovies">
-		<p>{{favoriteMovie.title}}</p>
+	<!-- 12. Create a form that takes in a word and then hides it when the form is submitted. -->
+	<!-- I used a function, goStealth instead of $scope.$watch -->
+	<form ng-hide="submitted">
+		<fieldset>
+			<br>
+			Enter a word and hit submit:
+			<input  type="text" ng-model="invisibleInk" placeholder ="type to test my invisible ink" style="width:250px">		
+			<h2>{{invisibleInk}}</h2>
+			<!-- <button ng-click="goStealth()">Submit</button> -->
+			<input type="submit" value="Submit" ng-click="goStealth()">
+		</fieldset>
+	</form>
+	<h3>{{notice}}</h3>
+
+
+
+
+
+
+	<!-- 11. Check out ng-keypress and create an input field and  -->
+	<!-- a counter that increments every time the user types a letter. -->
+	<input ng-keypress="count = count + 1" ng-init="count=0"><br>
+	counting keypresses: {{count}}<br><br>
+
+
+	<!-- 10. Add a checkbox that allows the user to see the list of favorite movies when checked  -->
+	<!-- and hides the list of movies when unchecked. -->
+	<input type="checkbox" ng-model="checked" id="check">
+	<label for="check">Show Movies?</label>	
+	<div ng-show="checked">
+
+		<!-- 9. Include the text "I have {{favoriteMovies.length}} favorite(s)" and 
+		use ng-pluralize so that the text displays favorite when there is 1 movie and favorites in all other cases -->
+		<h1>We have {{favoriteMovies.length}}   
+			<ng-pluralize count="favoriteMovies.length" when="{'1': 'movie', 'other': 'movies'}"></ng-pluralize>	
+			</h1>
+
+		<!-- 4. create and display favoriteMovies -->
+
+		<!-- 6. filter movies, order by name, limit to 3 -->
+		<input type="search" ng-model="search" placeholder="filter movies">
+
+		<div ng-repeat="favoriteMovie in favoriteMovies | filter:search | orderBy: '-title' ">
+		<!-- <div ng-repeat="favoriteMovie in favoriteMovies | filter:search | orderBy: 'title' | limitTo: 3 "> -->
+			<!-- 7. Create a custom filter to reverse the letters of the title of your favorite movies -->
+			<!-- but revers is annoying, so commented out -->
+			<!-- <p>Title: {{favoriteMovie.title | reverse }}</p> -->
+			<p></p>
+			<p>{{$index}}. title: {{favoriteMovie.title}}</p>
+
+			<!-- 8. Write a function called removeFavorite that removes a favorite movie from your array. -->
+			<button ng-click="removeFavorite(favoriteMovie)">Remove Favorite</button>
+		</div>
 	</div>
 
+
+	<!-- 5. add a form and use its contents to change background color -->
 	<input type="text" ng-model="favoriteColor" >
 	<h1 ng-style="{backgroundColor: favoriteColor}">Test span</h1>
 	<!-- display that color in text, as a word -->
 	<p>{{favoriteColor}}</p>
 
-	<!-- <input type="submit" value="Submit"> -->
+
+	
 
 </div>
