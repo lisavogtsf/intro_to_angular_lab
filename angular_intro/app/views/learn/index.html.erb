@@ -1,9 +1,15 @@
-<div ng-controller="IndexCtrl">
+<div ng-controller="IndexCtrl" ng-style="{backgroundColor: favoriteColor}">
 	<h1>Favorite Movies</h1>
 
 	<div ng-repeat="favoriteMovie in favoriteMovies">
 		<p>{{favoriteMovie.title}}</p>
-
-
 	</div>
+
+	<input type="text" ng-model="favoriteColor" >
+	<h1 ng-style="{backgroundColor: favoriteColor}">Test span</h1>
+	<!-- display that color in text, as a word -->
+	<p>{{favoriteColor}}</p>
+
+	<!-- <input type="submit" value="Submit"> -->
+
 </div>

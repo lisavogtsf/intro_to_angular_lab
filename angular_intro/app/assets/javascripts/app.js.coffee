@@ -3,7 +3,7 @@
 # define application
 IntroApp = angular.module "IntroApp", []
 
-IntroApp.controller "IndexCtrl", ['$scope', ($scope) ->
+IntroApp.controller "IndexCtrl", ['$scope', '$window', ($scope, $window) ->
 
 	$scope.favoriteMovies = [
 		{title : "ET"},
