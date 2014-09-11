@@ -1,2 +1,9 @@
-<h1>Learn#index</h1>
-<p>Find me in app/views/learn/index.html.erb</p>
+<div ng-controller="IndexCtrl">
+	<h1>Favorite Movies</h1>
+
+	<div ng-repeat="favoriteMovie in favoriteMovies">
+		<p>{{favoriteMovie.title}}</p>
+
+
+	</div>
+</div>
